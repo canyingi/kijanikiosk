@@ -3,3 +3,4 @@ function addTax(amount, rate) {
 }
 module.exports = { addTax };
 // second release
+const = ;
