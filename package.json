@@ -1,0 +1,13 @@
+{
+  "name": "kijanikiosk-payments",
+  "version": "1.0.0",
+  "description": "KijaniKiosk payments service",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "node --check src/index.js",
+    "build": "mkdir -p dist && cp src/index.js dist/index.js",
+    "test": "node --test test/"
+  },
+  "files": ["dist"],
+  "license": "UNLICENSED"
+}
