@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "node --check src/index.js",
-    "build": "mkdir -p dist && cp src/index.js dist/index.js",
+    "build": "exit 1",
     "test": "node --test test/"
   },
   "files": ["dist"],
