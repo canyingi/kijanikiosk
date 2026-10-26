@@ -8,6 +8,11 @@
     "build": "mkdir -p dist && cp src/index.js dist/index.js",
     "test": "node --test test/"
   },
-  "files": ["dist"],
-  "license": "UNLICENSED"
+  "files": [
+    "dist"
+  ],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
 }
