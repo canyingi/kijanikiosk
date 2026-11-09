@@ -1,0 +1,18 @@
+[Unit]
+Description=KijaniKiosk API (__ENV__)
+After=network.target
+
+[Service]
+User=kk-api
+Group=kijanikiosk
+Environment=PORT=__PORT__
+Environment=DEPLOY_ENV=__ENV__
+EnvironmentFile=/opt/kijanikiosk/config/__ENV__.env
+ExecStart=/usr/bin/python3 /opt/kijanikiosk/app/server.py
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

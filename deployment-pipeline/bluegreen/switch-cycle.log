@@ -1,0 +1,29 @@
+[22:41:33] === ENVIRONMENT: local staging on HP EliteBook (nginx proxy = 127.0.0.1:80) ===
+[22:41:33] === CLEAN STARTING STATE CONFIRMATION ===
+[22:41:33] blue:  active
+[22:41:33] green: active
+[22:41:33] blue  health: {"status": "ok", "version": "v1.3.0", "env": "blue"}
+[22:41:33] green health: {"status": "ok", "version": "v1.4.0", "env": "green"}
+[22:41:33] [SWITCH] 22:41:33Z current=blue target=blue (port 3000)
+[22:41:33] [SWITCH] 22:41:33Z pre-flight OK: {"status": "ok", "version": "v1.3.0", "env": "blue"}
+[22:41:33] [SWITCH] 22:41:33Z nginx reloaded -> proxy_pass http://kk-api-blue;
+[22:41:33] [SWITCH] 22:41:33Z proxy verified: serving v1.3.0 from blue
+[22:41:33] [SWITCH] 22:41:33Z state: active=blue previous=green
+[22:41:33] [SWITCH] 22:41:33Z switch complete
+[22:41:33] proxy: {"status": "ok", "version": "v1.3.0", "env": "blue"}
+[22:41:33] .active-env:   blue
+[22:41:33] .previous-env: green
+[22:41:52] Monitor started in separate terminal
+[22:41:52] === SWITCH blue -> green ===
+[22:41:52] [SWITCH] 22:41:52Z current=blue target=green (port 3001)
+[22:41:52] [SWITCH] 22:41:52Z pre-flight OK: {"status": "ok", "version": "v1.4.0", "env": "green"}
+[22:41:52] [SWITCH] 22:41:52Z nginx reloaded -> proxy_pass http://kk-api-green;
+[22:41:53] [SWITCH] 22:41:53Z proxy verified: serving v1.4.0 from green
+[22:41:53] [SWITCH] 22:41:53Z state: active=green previous=blue
+[22:41:53] [SWITCH] 22:41:53Z switch complete
+[22:41:53] === POST-SWITCH VERIFICATION ===
+[22:41:53] proxy: {"status": "ok", "version": "v1.4.0", "env": "green"}
+[22:41:53] .active-env:   green
+[22:41:53] .previous-env: blue
+[22:41:53] --- /etc/nginx/kijanikiosk-active-env.conf ---
+[22:41:53] proxy_pass http://kk-api-green;

@@ -1,0 +1,33 @@
+[22:42:05] T0 FAULT INTRODUCED: systemctl stop kk-api-green.service
+[22:42:19] T2 ROLLBACK CONFIRMED: blue healthy through proxy
+[22:42:19] .active-env:   blue
+[22:42:19] .previous-env: green
+[22:42:19] proxy: {"status": "ok", "version": "v1.3.0", "env": "blue"}
+
+=== SUMMARY ===
+T0 (fault introduced):        22:42:05
+T1 (ROLLBACK TRIGGERED):      22:42:17
+T2 (blue healthy via proxy):  22:42:19
+Detection  T0->T1: 12s
+Total      T0->T2: 14s   (target < 90s)
+Human interaction with monitor terminal: none
+
+=== FULL MONITOR OUTPUT ===
+[MONITOR START] 22:41:52Z window=60s interval=5s threshold=3 url=http://127.0.0.1:80/health
+[MONITOR OK] 22:41:52Z t+0s active=blue {"status": "ok", "version": "v1.3.0", "env": "blue"}
+[MONITOR OK] 22:41:57Z t+5s active=green {"status": "ok", "version": "v1.4.0", "env": "green"}
+[MONITOR OK] 22:42:02Z t+10s active=green {"status": "ok", "version": "v1.4.0", "env": "green"}
+[MONITOR WARN] 22:42:07Z t+15s health check failed (1/3)
+[MONITOR WARN] 22:42:12Z t+20s health check failed (2/3)
+[MONITOR WARN] 22:42:17Z t+25s health check failed (3/3)
+[MONITOR FAIL] ROLLBACK TRIGGERED 22:42:17Z after 3 consecutive failures
+[ROLLBACK] 22:42:17Z active=green previous=blue
+[ROLLBACK] 22:42:17Z rolling back green -> blue
+[SWITCH] 22:42:17Z current=green target=blue (port 3000)
+[SWITCH] 22:42:18Z pre-flight OK: {"status": "ok", "version": "v1.3.0", "env": "blue"}
+[SWITCH] 22:42:18Z nginx reloaded -> proxy_pass http://kk-api-blue;
+[SWITCH] 22:42:18Z proxy verified: serving v1.3.0 from blue
+[SWITCH] 22:42:18Z state: active=blue previous=green
+[SWITCH] 22:42:18Z switch complete
+[ROLLBACK] 22:42:18Z rollback complete
+[MONITOR ROLLBACK COMPLETE] 22:42:18Z active=blue previous=green proxy={"status": "ok", "version": "v1.3.0", "env": "blue"}
