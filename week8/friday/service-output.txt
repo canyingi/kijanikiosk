@@ -1,0 +1,11 @@
+=== kubectl get endpoints ===
+NAME                  ENDPOINTS                           AGE
+kk-payments-service   10.244.0.11:3001,10.244.0.12:3001   24m
+
+=== External NodePort curl ===
+$ curl -s http://192.168.59.103:30001/health
+{"status":"ok","version":"1.0.0-caef9fc"}
+
+=== In-cluster DNS curl ===
+$ kubectl exec -it <pod> -- wget -qO- http://kk-payments-service.default.svc.cluster.local:3001/health
+{"status":"ok","version":"1.0.0-caef9fc"}
