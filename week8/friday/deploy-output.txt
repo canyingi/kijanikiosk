@@ -1,0 +1,19 @@
+=== Starting-state reset ===
+The deployment and service were deleted first, then re-applied.
+
+=== kubectl get pods ===
+NAME                           READY   STATUS    RESTARTS   AGE
+kk-payments-7f94f59ff4-4kk5r   1/1     Running   0          78s
+kk-payments-7f94f59ff4-w2vv4   1/1     Running   0          78s
+
+=== kubectl get deployment ===
+NAME          READY   UP-TO-DATE   AVAILABLE   AGE
+kk-payments   2/2     2            2           81s
+
+=== kubectl get replicaset ===
+NAME                     DESIRED   CURRENT   READY   AGE
+kk-payments-7f94f59ff4   2         2         2       90s
+
+=== Pod image provenance ===
+kk-payments-7f94f59ff4-4kk5r	docker.io/canyingi/kk-payments:1.0.0-caef9fc	Never
+kk-payments-7f94f59ff4-w2vv4	docker.io/canyingi/kk-payments:1.0.0-caef9fc	Never

@@ -1,0 +1,13 @@
+=== Self-Healing Rerun (Fresh Deployment) ===
+
+--- Pod deletion and replacement ---
+T0 (Pod deleted): 2026-11-09T20:30:15Z
+T1 (Replacement Running): 2026-11-09T20:30:52Z
+
+--- Summary ---
+Deleted Pod: kk-payments-7f94f59ff4-jttvd
+Replacement Pod: kk-payments-7f94f59ff4-fgjww
+Recovery time: 37 seconds
+
+Context: single-node Minikube, image already cached on the node (imagePullPolicy: Never), no registry pull.
+Note: "Running" means the process started, not that it was checked as ready for traffic.

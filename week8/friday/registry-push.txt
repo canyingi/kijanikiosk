@@ -1,0 +1,41 @@
+=== Version computation (from package.json + git HEAD) ===
+$ VERSION=$(node -p "require(\"./package.json\").version")
+$ GITSHA=$(git rev-parse --short=7 HEAD)
+$ TAG="${VERSION}-${GITSHA}"
+$ echo "TAG=${TAG}"
+TAG=1.0.0-caef9fc
+
+=== docker push canyingi/kk-payments:1.0.0-caef9fc ===
+The push refers to repository [docker.io/canyingi/kk-payments]
+08aaa0e86522: Pushed
+44136fa355b3: Mounted from canyingi/python-dev15-img
+3cfaa01f596e: Pushed
+25f1d6b1951a: Pushed
+2240c6b3af09: Pushed
+d4a527edae3c: Pushed
+2d3406edf98b: Pushed
+1.0.0-caef9fc: digest: sha256:84100b2adc10b17e38dbd6a686aeb84c9e265635f2dcb520cd37896c5682957b size: 856
+
+=== docker rmi (delete local copies — registry is source of truth) ===
+Untagged: kk-payments:1.0.0-caef9fc
+Untagged: canyingi/kk-payments:1.0.0-caef9fc
+Deleted: sha256:84100b2adc10b17e38dbd6a686aeb84c9e265635f2dcb520cd37896c5682957b
+
+=== docker pull canyingi/kk-payments:1.0.0-caef9fc ===
+1.0.0-caef9fc: Pulling from canyingi/kk-payments
+2d3406edf98b: Pull complete
+2240c6b3af09: Pull complete
+3cfaa01f596e: Pull complete
+d4a527edae3c: Pull complete
+44136fa355b3: Already exists
+08aaa0e86522: Download complete
+Digest: sha256:84100b2adc10b17e38dbd6a686aeb84c9e265635f2dcb520cd37896c5682957b
+Status: Downloaded newer image for canyingi/kk-payments:1.0.0-caef9fc
+
+=== docker images (only the registry tag should remain) ===
+REPOSITORY:TAG
+docker.io/canyingi/kk-payments:1.0.0-caef9fc
+
+=== Credential audit ===
+No passwords, tokens, or base64 auth blobs appear in this file.
+The registry hostname canyingi/kk-payments is public information.
